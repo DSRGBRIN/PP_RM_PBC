@@ -1,0 +1,38 @@
+"reserve1" : [1, 0, 0, 0, 0, 0], #reservation to room A
+"reserve2" : [0, 1, 0, 0, 0, 0], #reservation to room A
+"reserve3" : [0, 0, 1, 0, 0, 0], #reservation to room A
+"reserve4" : [0, 0, 0, 1, 0, 0], #reservation to room A
+"reserve5" : [0, 0, 0, 0, 1, 0]  #reservation to room A
+
+"room_A" : [1, 1, 1, 1, 1, 1], #room A
+"room_B" : [1, 1, 1, 1, 1, 1], #room B
+"room_C" : [1, 1, 1, 1, 1, 1], #room C
+"room_D" : [1, 1, 1, 1, 1, 1], #room D
+"room_E" : [1, 1, 1, 1, 1, 1] #room E
+
+> python3.10 .\test1.py 2
+case 1, 1st reservation
+Init   room_A :  [1, 1, 1, 1, 1, 1]
+Rsv vector    :  [1, 0, 0, 0, 0, 0]
+No conflicting schedule, CV =  0
+Updated room_A : [0, 1, 1, 1, 1, 1]
+case 2, 2nd reservation
+Init   room_A :  [0, 1, 1, 1, 1, 1]
+Rsv vector    :  [0, 1, 0, 0, 0, 0]
+No conflicting schedule, CV =  0
+Updated room_A : [0, 0, 1, 1, 1, 1]
+case 3, 3rd reservation
+Init   room_A :  [0, 0, 1, 1, 1, 1]
+Rsv vector    :  [0, 0, 1, 0, 0, 0]
+No conflicting schedule, CV =  0
+Updated room_A : [0, 0, 0, 1, 1, 1]
+case 4, 4th reservation
+Init   room_A :  [0, 0, 0, 1, 1, 1]
+Rsv vector    :  [0, 0, 0, 1, 0, 0]
+No conflicting schedule, CV =  0
+Updated room_A : [0, 0, 0, 0, 1, 1]
+case 5, 5th reservation
+Init   room_A :  [0, 0, 0, 0, 1, 1]
+Rsv vector    :  [0, 0, 0, 0, 1, 0]
+No conflicting schedule, CV =  0
+Updated room_A : [0, 0, 0, 0, 0, 1]
