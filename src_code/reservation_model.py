@@ -1,5 +1,4 @@
 import tenseal as ts
-#import numpy as np
 import time
 import pickle 
 from serialize_module import ser_CtxIPFS, deser_CtxIPFS, ser_VectorIPFS, deser_VectorIPFS
@@ -18,7 +17,7 @@ def genContext():
 def genData(user=False):
     if user:
         data = {
-                #5room,6slot:[1, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
+                #4room,6slot:[1, 2, 3, 4, 5, 6,   1, 2, 3, 4, 5, 6,   1, 2, 3, 4, 5, 6,   1, 2, 3, 4, 5, 6]
                 "reserve1" : [1, 1, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
                 "reserve2" : [0, 0, 1, 1, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
                 "reserve3" : [1, 0, 1, 0, 1, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
@@ -73,21 +72,16 @@ def makeReservation(encV, VTable, VReserve, Allkeys = []):
     postI = decrypt2Int(rsv_C.polyval(inqr_poly))
     CV = getConflictValue(rsv_C.polyval(inqr_poly))
     #generate new table
-    print("Init  ",VTable,": ",FED_data[VTable])
-    print("Rsv vector    : ",User_data[VReserve])
+    print("Init",VTable,":\n",FED_data[VTable])
+    print("Rsv vector :\n",User_data[VReserve])
     if CV == 0:
         print("No conflicting schedule, CV = ", CV)
         rsv_V = encV
-        
         postComp = rsv_V.polyval(rsv_poly)
-        
         print("ipfs:", ser_VectorIPFS(postComp))
-        
-        #print( decrypt(postComp) )
-        
         postR = decrypt2Int(postComp)
         makeUpdate(VTable, postR)
-        print("Updated",VTable,":", postR)
+        print("Updated",VTable,":\n", postR)
         
     else:
         #send confirmation to user
@@ -95,12 +89,11 @@ def makeReservation(encV, VTable, VReserve, Allkeys = []):
         enc_RT_user_ipfs = ser_VectorIPFS(enc_RT_user )
         print("ipfs:", enc_RT_user_ipfs)
         des_RT_user = deser_VectorIPFS(Allkeys[5], enc_RT_user_ipfs, 24)
-        print("decrypted user table:", decrypt2Int(des_RT_user))
-        print("Conflict value: ",postI)
+        print("decrypted user table:\n", decrypt2Int(des_RT_user))
+        print("Conflict value:\n",postI)
         print("Conflicting schedule: ", CV, " entries")
         print("Reservation table is not updated")
-        print("post ",VTable," : ", FED_data[VTable])
-    
+        print("post ",VTable," :\n", FED_data[VTable])
     print()
     
 if __name__ == "__main__":
