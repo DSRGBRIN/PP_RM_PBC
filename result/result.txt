@@ -1,0 +1,67 @@
+PS C:\...\PPRM_PB> python3.10 reservation_model.py
+Storing keys
+FED_Sk : QmZKWp9ocGiVtj9xQBap69MnzTAvKBqNZtzyUFKLRa1f9A
+FED_Pk : QmZ6M3D8e2BShF1Lvfm22JknvWDDAzK56EVEkpyqSRTr5t
+User_Sk: QmdDUQFU7dn7VBr7qpzc6LE6ThLZp29vJwWcHL4wPYs2nV
+User_Pk: QmZR2PfYNTtmLmgx7y8WyVbCqKHzvAJNbWqXwJL3k559xT
+case 1, 1st reservation
+Init day_1 :
+ [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector :
+ [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+No conflicting schedule, CV =  0
+ipfs: QmPLNK4D4hnXyyJKnAouYSfRzNXVKu7Fd6JVFxjFpqvun8
+Updated day_1 :
+ [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+case 2, 2nd reservation
+Init day_1 :
+ [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector :
+ [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+No conflicting schedule, CV =  0
+ipfs: QmRTHWLQREDimhU4jGyac2c86uPrKXWHyr85VRxQa3DjZF
+Updated day_1 :
+ [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+case 3, 3rd reservation
+Init day_1 :
+ [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector :
+ [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ipfs: QmQTRAY6t9gcfpsT4xZ8owQssqQ8UcAEuWRbB4A88ubh9D
+668546
+decrypted user table:
+ [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Conflict value:
+ [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Conflicting schedule:  2  entries
+Reservation table is not updated
+post  day_1  :
+ [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+case 4, 4th reservation
+Init day_2 :
+ [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector :
+ [1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+No conflicting schedule, CV =  0
+ipfs: QmbneA11oUGz1KeXzbXwwVuZQegRgejRL6W33C16Rt2YsH
+Updated day_2 :
+ [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+case 5, 5th reservation
+Init day_2 :
+ [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector :
+ [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ipfs: QmT3XH8ePYyN6XjxP52itxDWgwD46ZvN7eA8qCkQvXiPS5
+668710
+decrypted user table:
+ [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Conflict value:
+ [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Conflicting schedule:  3  entries
+Reservation table is not updated
+post  day_2  :
+ [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
