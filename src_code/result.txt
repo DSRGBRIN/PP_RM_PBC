@@ -1,38 +1,35 @@
-"reserve1" : [1, 0, 0, 0, 0, 0], #reservation to room A
-"reserve2" : [0, 1, 0, 0, 0, 0], #reservation to room A
-"reserve3" : [0, 0, 1, 0, 0, 0], #reservation to room A
-"reserve4" : [0, 0, 0, 1, 0, 0], #reservation to room A
-"reserve5" : [0, 0, 0, 0, 1, 0]  #reservation to room A
-
-"room_A" : [1, 1, 1, 1, 1, 1], #room A
-"room_B" : [1, 1, 1, 1, 1, 1], #room B
-"room_C" : [1, 1, 1, 1, 1, 1], #room C
-"room_D" : [1, 1, 1, 1, 1, 1], #room D
-"room_E" : [1, 1, 1, 1, 1, 1] #room E
-
-> python3.10 .\test1.py 2
+PS C:\Users\akbar\OneDrive\Documents\_Keltian\2023\PPRM_PB> python3.10 .\v1ic3ina.py
 case 1, 1st reservation
-Init   room_A :  [1, 1, 1, 1, 1, 1]
-Rsv vector    :  [1, 0, 0, 0, 0, 0]
+Init   day_1 :  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector    :  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 No conflicting schedule, CV =  0
-Updated room_A : [0, 1, 1, 1, 1, 1]
+ipfs: QmQ53q9gHyr862aLpxDHjv4ojdHq8JkcK3ivhjF1JYrWuk
+Updated day_1 : [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 case 2, 2nd reservation
-Init   room_A :  [0, 1, 1, 1, 1, 1]
-Rsv vector    :  [0, 1, 0, 0, 0, 0]
+Init   day_1 :  [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector    :  [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 No conflicting schedule, CV =  0
-Updated room_A : [0, 0, 1, 1, 1, 1]
+ipfs: QmRgW1XFarzib3xUUN95b8PwaPHwiLxWLavvMJc8pkH1zW
+Updated day_1 : [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 case 3, 3rd reservation
-Init   room_A :  [0, 0, 1, 1, 1, 1]
-Rsv vector    :  [0, 0, 1, 0, 0, 0]
-No conflicting schedule, CV =  0
-Updated room_A : [0, 0, 0, 1, 1, 1]
+Init   day_1 :  [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector    :  [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ipfs: QmRmE3kmRe8Luc588rTXwFuW5qV9cXw99GCXAfBCpARrHq
+Conflict value:  [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Conflicting schedule:  2  entries
+Reservation table is not updated
+post  day_1  :  [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 case 4, 4th reservation
-Init   room_A :  [0, 0, 0, 1, 1, 1]
-Rsv vector    :  [0, 0, 0, 1, 0, 0]
+Init   day_2 :  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector    :  [1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 No conflicting schedule, CV =  0
-Updated room_A : [0, 0, 0, 0, 1, 1]
+ipfs: QmaY6gb1DdnkjYJ4wF3L9GvXZt6qifVY7upa5xqwFC4PrQ
+Updated day_2 : [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 case 5, 5th reservation
-Init   room_A :  [0, 0, 0, 0, 1, 1]
-Rsv vector    :  [0, 0, 0, 0, 1, 0]
-No conflicting schedule, CV =  0
-Updated room_A : [0, 0, 0, 0, 0, 1]
+Init   day_2 :  [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Rsv vector    :  [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ipfs: QmPr473pqhFCJZK2hhHLuRdBYpPC2BYXgsedHfavrwUj29
+Conflict value:  [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Conflicting schedule:  3  entries
+Reservation table is not updated
+post  day_2  :  [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
