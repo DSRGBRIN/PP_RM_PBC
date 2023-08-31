@@ -1,2 +1,2 @@
-# PP_RM_PBC
+# Privacy-preserving Reservation Model
 Privacy-preserving Reservation Model over Public Blockchain
