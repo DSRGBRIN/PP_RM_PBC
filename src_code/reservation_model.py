@@ -17,19 +17,17 @@ def genContext():
 def genData(user=False):
     if user:
         data = {
-                "reserve1" : [1, 0, 0, 0, 0, 0], #reservation to room A
-                "reserve2" : [0, 1, 0, 0, 0, 0], #reservation to room A
-                "reserve3" : [0, 0, 1, 0, 0, 0], #reservation to room A
-                "reserve4" : [0, 0, 0, 1, 0, 0], #reservation to room A
-                "reserve5" : [0, 0, 0, 0, 1, 0]  #reservation to room A
+                #5room,6slot:[1, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
+                "reserve1" : [1, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
+                "reserve2" : [0, 1, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
+                "reserve3" : [0, 0, 1, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room A, day 1
+                "reserve4" : [0, 0, 0, 0, 0, 0,   1, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room B, day 2
+                "reserve5" : [0, 0, 0, 0, 0, 0,   0, 1, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0], #reservation to room B, day 2
                }
     else: #reservation table
         data = {
-                "room_A" : [1, 1, 1, 1, 1, 1], #room A
-                "room_B" : [1, 1, 1, 1, 1, 1], #room B
-                "room_C" : [1, 1, 1, 1, 1, 1], #room C
-                "room_D" : [1, 1, 1, 1, 1, 1], #room D
-                "room_E" : [1, 1, 1, 1, 1, 1] #room E
+                "day_1" : [1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1], #day 1
+                "day_2" : [1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1], #day 2
                }
     return data
     
@@ -62,17 +60,6 @@ def getConflictValue(encV):
         total += int(k)
     #print(total)
     return total
-
-def makeInquiry(inqV, VTable, VInquiry):
-    print("Initial table : ",FED_data[VTable])
-    print("Inqr vector   : ",User_data[VInquiry])
-    postI = decrypt2Int(inqV.polyval(inqr_poly))
-    print("Conflict value: ",postI)
-    CV = getConflictValue(inqV.polyval(inqr_poly))
-    if CV > 0:
-        print("Conflicting schedule: ", CV, " entries")
-    else:
-        print("No conflicting schedule, CV =", CV)
 
 def makeUpdate(room, newValue):
     global FED_data, FED_encV
@@ -108,11 +95,11 @@ if __name__ == "__main__":
     import sys
     
     FED_context = genContext()
-    FED_data = genData2()
+    FED_data = genData()
     FED_encV = encryptData(FED_context, FED_data)
     
     User_context = genContext()
-    User_data = genData2(True)
+    User_data = genData(True)
     User_encV = encryptData(User_context, User_data)
 
     FED2User_encV = encryptData(User_context, FED_data) #conflict checking
@@ -123,23 +110,22 @@ if __name__ == "__main__":
     rsv_poly = [0, 0.5, 0.5]    #reservation: 0.5x^2 + 0.5x
 
     print("case 1, 1st reservation ")
-    rsv1 = FED_encV["room_A"] - User2FED_encV["reserve1"]
-    makeReservation(rsv1, "room_A",  "reserve1")
+    rsv1 = FED_encV["day_1"] - User2FED_encV["reserve1"]
+    makeReservation(rsv1, "day_1",  "reserve1")
     
     print("case 2, 2nd reservation ")
-    rsv1 = FED_encV["room_A"] - User2FED_encV["reserve2"]
-    makeReservation(rsv1, "room_A",  "reserve2")
+    rsv2 = FED_encV["day_1"] - User2FED_encV["reserve2"]
+    makeReservation(rsv2, "day_1",  "reserve2")
     
     print("case 3, 3rd reservation ")
-    rsv1 = FED_encV["room_A"] - User2FED_encV["reserve3"]
-    makeReservation(rsv1, "room_A",  "reserve3")
+    rsv3 = FED_encV["day_1"] - User2FED_encV["reserve3"]
+    makeReservation(rsv3, "day_1",  "reserve3")
     
     print("case 4, 4th reservation ")
-    rsv1 = FED_encV["room_A"] - User2FED_encV["reserve4"]
-    makeReservation(rsv1, "room_A",  "reserve4")
+    rsv4 = FED_encV["day_2"] - User2FED_encV["reserve4"]
+    makeReservation(rsv4, "day_2",  "reserve4")
     
     print("case 5, 5th reservation ")
-    rsv1 = FED_encV["room_A"] - User2FED_encV["reserve5"]
-    makeReservation(rsv1, "room_A",  "reserve5")
-        
-        
+    rsv5 = FED_encV["day_2"] - User2FED_encV["reserve5"]
+    makeReservation(rsv5, "day_2",  "reserve5")
+    
