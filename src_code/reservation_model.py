@@ -95,7 +95,7 @@ def makeReservation(encV, VTable, VReserve, Allkeys = []):
         enc_RT_user_ipfs = ser_VectorIPFS(enc_RT_user )
         print("ipfs:", enc_RT_user_ipfs)
         des_RT_user = deser_VectorIPFS(Allkeys[5], enc_RT_user_ipfs, 24)
-        print("decrypted_current table:", decrypt2Int(des_RT_user))
+        print("decrypted user table:", decrypt2Int(des_RT_user))
         print("Conflict value: ",postI)
         print("Conflicting schedule: ", CV, " entries")
         print("Reservation table is not updated")
